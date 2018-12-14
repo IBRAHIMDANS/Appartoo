@@ -1,0 +1,31 @@
+<%- include header.ejs -%>
+
+<div class="text-center">
+
+  <form class="form-signin" action="/Connexion" method="POST">
+    <img class="mb-4" src="images/logo_index.jpg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <label for="username" class="sr-only">username</label>
+    <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
+
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" class="form-control" placeholder="Password" name="password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+
+    <div class="add-btn btn-light">
+      <a href="inscription" title="Abonnez-vous !">
+        <i class="fas fa-user-plus fa-2x"></i>
+        Vous n'êtes pas encore inscrit ?</a>
+    </div>
+    <% if(err) { %>
+    <div class="alert alert-danger"> <span> Utilisateur ou mot de passe incorrect si vous etes pas inscrits veuiller
+        vous inscrire</span> </div>
+    <% } %>
+
+  </form>
+
+
+
+</div>
+
+<%- include footer.ejs -%>

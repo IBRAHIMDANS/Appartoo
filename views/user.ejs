@@ -1,0 +1,70 @@
+<%- include header.ejs -%>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-lg btn-light">
+    <a href="/">
+      <i class="fas fa-sign-out-alt"> Deconnexion </i>
+    </a>
+</div>
+<div class="text-center">
+  <h1> Bienvenue l'Alien
+    <%= user.Prenom%>
+  </h1>
+  <div class="mt-5"> </div>
+  <div class="row">
+    <div class="col">
+      <h2><span class="badge badge-pill badge-primary">Vos Informations</span></h2>
+      <p></p>
+      <div class="col infos">
+        <% for (items in user){ %>
+        <p class='row btn-outline-primary '> <b>
+            <%= items.toUpperCase() %></b> :
+          <%= user[items] %>
+        </p>
+        <% } %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Modifier
+        </button>
+      </div>
+    </div>
+    <div class="col">
+      <h2>
+        <span class="badge badge-pill badge-primary add-btn"> <a href="/note/<%= row.id_user%>" name="<%= user.id_user %>">
+            <input type="hidden" name="id" value="<%= user.id_user %>"> Votre Notebook </a> </span></h2>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier vos Informations</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" action="/user" method="POST" data-toggle="validator">
+          <input type="hidden" name="_method" value="PUT">
+          <p class="h6 mb-3 font-weight-bold text-center">Modifier vos Informations</p>
+          <input type="hidden" name="id" value="<%= row.id_user %>">
+          <input type="text" class="form-control" placeholder="Prenom" name="firstname" required autofocus>
+          <input type="text" class="form-control" placeholder="Nom" name="lastname" required>
+          <input type="email" class="form-control" placeholder="Email" name="email" required>
+          <input type="number" class="form-control" placeholder="Age" min="18" max="900" name="age" required>
+          <input type="text" class="form-control" placeholder="Famille" name="familly" required>
+          <input type="food" class="form-control" placeholder="Nourriture" name="food" required>
+          <input type="race" class="form-control" placeholder="Race" name="race" required>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" type="submit" id="submit">Save </button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</script>
+<%- include footer.ejs -%>
