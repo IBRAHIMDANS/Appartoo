@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const NotebookModel = require('../models/notebook');
 
 // Get Note by ID
-router.get('/:id', function (req, res, next) {
+ router.get('/:id', function (req, res, next) {
     const id = req.params.id
     NotebookModel.getNote(req, res, id)
   })
@@ -54,3 +54,6 @@ router.get('/:id', function (req, res, next) {
   });
 
 module.exports = router;
+
+
+///try redirect for fix a bug !!!!

@@ -1,10 +1,10 @@
-var {
+const {
     Router
 } = require('express');
-var usersRouter = require('./notebook');
-var indexRouter = require('./users');
+const usersRouter = require('./notebook');
+const indexRouter = require('./users');
 
-var api = Router();
+const api = Router();
 
 api.use('/', indexRouter);
 api.use('/note', usersRouter);

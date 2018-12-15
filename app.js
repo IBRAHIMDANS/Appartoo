@@ -1,20 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var bodyParser = require("body-parser");
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const bodyParser = require("body-parser");
 const session = require('express-session');
-var methodOverride = require('method-override');
-var cors = require('cors')
+const methodOverride = require('method-override');
+const cors = require('cors')
 
 
-var api = require("./routes")
-var db = require("./models")
+const api = require("./routes")
+const db = require("./models")
 
 
 
-var app = express();
+const app = express();
 
 
 // view engine setup
@@ -33,17 +33,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('_method'));
 app.use(methodOverride(function (req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     // look in urlencoded POST bodies and delete it
-    var method = req.body._method
+    const method = req.body._method
     delete req.body._method
     return method
   }

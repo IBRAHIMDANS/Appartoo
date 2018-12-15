@@ -66,6 +66,7 @@ class NotebookModel {
       if (err) res.send(err.message);
       else res.render('../views/note.ejs', {
         title: 'Notebook',
+        id : id,
         note,
 
       });
